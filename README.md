@@ -4,7 +4,7 @@ A responsive and modern expense tracking dashboard built with React.js to manage
 
 ## 🚀 Live Demo
 
-👉 https://yash-expensetracker.netlify.app/
+[View Live Demo](https://yash-expensetracker.netlify.app/)
 
 ## ✨ Features
 
@@ -18,7 +18,7 @@ A responsive and modern expense tracking dashboard built with React.js to manage
 - Automatic income, expense, and balance calculation
 - Category-based expense visualization using a pie chart
 - LocalStorage support for persistent data
-- Empty state for no transactions
+- Empty state when no transactions are available
 - Responsive design for desktop, tablet, and mobile devices
 
 ## 🛠️ Tech Stack
@@ -47,6 +47,48 @@ src/
 ├── App.jsx
 ├── App.css
 └── index.css
-## Expanding the ESLint configuration
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 💾 Data Persistence
+
+Transactions are stored in the browser's LocalStorage, allowing users to retain their transaction data even after refreshing the page.
+
+## 📱 Responsive Design
+
+The application is designed to work across:
+
+- Desktop
+- Tablet
+- Mobile
+
+## 📸 Screenshots
+
+### Expense Tracker Dashboard
+
+![Expense Tracker Dashboard](./public/dashboard.png)
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Yash-bot-max/expense-tracker-dashboard.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd expense-tracker-dashboard
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
