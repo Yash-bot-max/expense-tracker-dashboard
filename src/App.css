@@ -1,0 +1,26 @@
+body.dark-body {
+    background: linear-gradient(224deg, #050816, #0b1026, #11163a);
+}
+
+body.light-body {
+    background: #f8fafc;
+}
+
+.app {
+    min-height: 100vh;
+}
+
+.app.dark {
+    color: #F8FAFC;
+}
+
+.app.light {
+    color: #0F172A;
+}
+
+
+.app.light .theme-btn {
+    background: #ffffff;
+    color: #0f172a;
+    border-color: #cbd5e1;
+}

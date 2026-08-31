@@ -1,0 +1,250 @@
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.set {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav img {
+    width: 40px;
+    height: 40px;
+}
+
+nav h1 {
+    font-weight: 600;
+    color: white;
+    font-size: 30px;
+    line-height: 8px;
+}
+
+nav p {
+    font-size: 13px;
+    color: grey;
+    font-family: sans-serif;
+    font-weight: 500;
+}
+
+.theme-btn {
+    width: 42px;
+    height: 42px;
+    border: 1px solid #334155;
+    border-radius: 50%;
+    background: #111a33;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    cursor: pointer;
+    transition: 0.25s ease;
+    margin-right: 40px;
+}
+
+.theme-btn:hover {
+    transform: scale(1.08);
+}
+
+.hero {
+    width: 100%;
+    margin-bottom: 14px;
+}
+
+.inquiry {
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 0px 40px 0px 40px;
+}
+
+.card {
+    width: 100%;
+    height: 65px;
+    border-radius: 18px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .25);
+    transition: .3s;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .35);
+}
+
+.card .icon {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    color: white;
+}
+
+.card .inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card .inner p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 14px;
+}
+
+.card .value {
+    margin: 3px 0 4px;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+}
+
+.balance {
+    background: linear-gradient(135deg, #4F46E5, #7C3AED);
+}
+
+.card.balance .icon {
+    background: rgb(24 4 71 / 62%);
+}
+
+.income {
+    background: linear-gradient(135deg, #059669, #10B981);
+}
+
+.card.income .icon {
+    background: rgb(79 211 52 / 51%);
+}
+
+.expence {
+    background: linear-gradient(135deg, #DC2626, #F43F5E);
+}
+
+.card.expence .icon {
+    background: rgb(161 21 26);
+}
+
+.app.light nav h1 {
+
+    color: #0f172a;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.app.light nav p {
+    color: #0f172a;
+}
+
+
+@media (min-width: 768px) and (max-width: 1410px) {
+
+    .inquiry {
+        padding: 0px 34px 0px 34px;
+        flex-direction: row;
+
+    }
+
+    .inquiry.large-amount {
+        flex-direction: column;
+    }
+    .card.large-amount{
+        width: 100%;
+        box-sizing: border-box;
+        height: 86px;
+        padding: 16px 20px;
+        border-radius: 17px;
+        gap: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    nav {
+        padding: 15px 5px;
+        align-items: flex-start;
+    }
+
+    .set {
+        gap: 12px;
+    }
+
+    nav img {
+        width: 42px;
+        height: 42px;
+    }
+
+    nav h1 {
+        font-size: 24px;
+        line-height: 1.1;
+        margin: 0 0 5px;
+    }
+
+    nav p {
+        font-size: 11px;
+        line-height: 1.5;
+        margin: 0;
+        max-width: 230px;
+    }
+
+    .theme-btn {
+        flex-shrink: 0;
+        width: 42px;
+        height: 42px;
+        margin-right: 0px;
+    }
+
+    /* Cards */
+
+    .inquiry {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .card {
+        width: 100%;
+        box-sizing: border-box;
+        height: 86px;
+        padding: 16px 20px;
+        border-radius: 17px;
+        gap: 18px;
+    }
+
+    .card .icon {
+        width: 58px;
+        height: 58px;
+        border-radius: 14px;
+    }
+
+    .card .inner p {
+        font-size: 12px;
+    }
+
+    .card .value {
+        font-size: 26px;
+        margin: 2px 0 3px;
+    }
+}
+
+@media (max-width: 500px) {
+        .card .value {
+        font-size: 22px;
+        margin: 2px 0 3px;
+    }
+}
+@media (max-width: 400px) {
+        .card .value {
+        font-size: 18px;
+        margin: 2px 0 3px;
+    }
+}

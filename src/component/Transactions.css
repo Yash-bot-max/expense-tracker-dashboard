@@ -1,0 +1,161 @@
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 0px 40px 20px 40px;
+}
+
+.recent {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: rgba(15, 23, 42, 0.85);
+    border: 2px solid rgba(148, 163, 184, 0.15);
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    width: 100%;
+    padding: 25px;
+    padding-top: 0px;
+}
+.recent::-webkit-scrollbar {
+    width: 8px;
+}
+
+.recent::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 10px;
+}
+
+.recent::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+.empty-transactions {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20px;
+    padding: 35px 25px;
+    text-align: center;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 18px;
+    color: #F8FAFC;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+}
+
+.empty-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: rgba(99, 102, 241, 0.12);
+    font-size: 25px;
+}
+
+.empty-transactions h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+}
+
+.empty-transactions p {
+    max-width: 420px;
+    margin: 0 auto 8px;
+    color: #94A3B8;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.empty-transactions span {
+    color: #818CF8;
+    font-size: 11px;
+}
+
+
+
+/* Light mode */
+.app.light .add,
+.recent {
+    border: 2px solid rgba(148, 163, 184, 0.18);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* LIGHT MODE */
+.app.light .add input,
+.app.light .add select {
+    border: 1px solid #cbd5e1b7;
+    color: #ffffff;
+
+}
+
+.app.light .recent nav input,
+.app.light .recent select {
+    border: 1px solid #cbd5e1b7;
+    color: #ffffff;
+
+}
+
+.app.light .date-chip {
+    border: 1px solid #cbd5e1b7;
+}
+
+.app.light .transaction-card {
+    border: 1px solid #cbd5e175;
+}
+
+.app.light .more-detailed {
+    border: 1px solid #cbd5e175;
+}
+
+.app.light .add input:focus,
+.app.light .add select:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 8px rgba(99, 102, 241, 0.15);
+}
+.app.light .add-logo svg{
+    color: white;
+}
+.app.light .transaction-logo svg{
+    color:white;
+}
+
+
+@media (min-width: 768px) and (max-width: 1410px) {
+    .recent {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 27px;
+    }
+
+    .section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 20px 20px;
+        box-sizing: border-box;
+        align-items: center;
+    }
+
+
+}
+
+@media (max-width: 768px) {
+
+    .section {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+        padding: 0 0 20px;
+    }
+
+    .recent {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 16px;
+        padding-top: 16px;
+        border-radius: 16px;
+    }
+
+}
