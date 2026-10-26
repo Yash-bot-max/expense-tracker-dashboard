@@ -46,14 +46,39 @@ const Transactions = ({ transactions, setTransactions }) => {
             setValue("date", transaction.date);
         }
     };
-
-    // Delete the transaction with the matching ID and update the transactions state.
-    const handleDelete = (taskId) => {
-        const newTransactions = transactions.filter(
-            transactions => transactions.id !== taskId
+const handleDelete = async (taskId) => {
+    try {
+        const response = await fetch(
+            `http://localhost:5000/transactions/delete-transaction/${taskId}`,
+            {
+                method: "DELETE",
+            }
         );
-        setTransactions(newTransactions);
-    };
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                result.message || "Failed to delete transaction"
+            );
+        }
+
+        setTransactions((prev) =>
+            prev.filter((transaction) => transaction.id !== taskId)
+        );
+
+    } catch (error) {
+        console.error("Error deleting transaction:", error);
+
+        Swal.fire({
+            title: "Error!",
+            text: error.message || "Unable to delete transaction.",
+            icon: "error",
+            background: "#0F172A",
+            color: "#F8FAFC",
+        });
+    }
+};
 
 
 
