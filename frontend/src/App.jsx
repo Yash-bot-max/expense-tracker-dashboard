@@ -60,7 +60,9 @@ import Transactions from "./component/Transactions";
 import { useState, useEffect } from "react";
 import "./App.css";
 
-const API_URL = "http://localhost:5000/transactions";
+// const API_URL = "http://localhost:5000/transactions";
+const API_URL =
+  "https://expense-tracker-dashboard-1-rm03.onrender.com/transactions";
 
 function App() {
   const [transactions, setTransactions] = useState([]);
