@@ -87,7 +87,7 @@ export const login = async (req, res) => {
       });
     }
 
-    const isPasswordValid = await bcrypt.compare( password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
       return res.status(401).json({
@@ -96,20 +96,28 @@ export const login = async (req, res) => {
       });
     }
 
-    const token = jwt.sign( { userId: user._id.toString() }, process.env.JWT_SECRET,
+    const token = jwt.sign({ userId: user._id.toString() }, process.env.JWT_SECRET,
       { expiresIn: "1d" }
     );
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      maxAge: 24 * 60 * 60 * 1000,
+      path: "/",
+    });
 
     return res.status(200).json({
       success: true,
       message: "Login successful",
-      token,
       user: {
         id: user._id,
         name: user.name,
         email: user.email,
       },
     });
+
   } catch (error) {
     console.error("Login error:", error.message);
 
@@ -119,3 +127,49 @@ export const login = async (req, res) => {
     });
   }
 };
+
+
+export const getMe = async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).select("name email");
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+      },
+    });
+  } catch (error) {
+    console.error("Get current user error:", error.message);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch user",
+    });
+  }
+};
+
+export const logout = (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    path: "/",
+  });
+
+  return res.status(200).json({
+    success: true,
+    message: "Logged out successfully",
+  });
+};
+
+

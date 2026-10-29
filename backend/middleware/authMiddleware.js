@@ -2,16 +2,14 @@ import jwt from "jsonwebtoken";
 
 export const protect = (req, res, next) => {
   try {
-    const authHeader = req.headers.authorization;
+    const token = req.cookies?.token;
 
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    if (!token) {
       return res.status(401).json({
         success: false,
         message: "Authentication required. Please login.",
       });
     }
-
-    const token = authHeader.split(" ")[1];
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
@@ -21,7 +19,7 @@ export const protect = (req, res, next) => {
   } catch (error) {
     return res.status(401).json({
       success: false,
-      message: "Invalid or expired token.",
+      message: "Invalid or expired token. Please login again.",
     });
   }
 };

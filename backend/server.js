@@ -4,12 +4,34 @@ import transactionRouter from "./routes/transactionRoutes.js";
 import authRouter from "./routes/authRoutes.js";
 import connectDB from "./config/db.js";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(
+    cors({
+        origin: (origin, callback) => {
+            const allowedOrigins = [
+                "http://localhost:5173",
+                "https://expense-trackerv-2.netlify.app",
+            ];
+
+       
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Origin not allowed by CORS"));
+        }
+    },
+    credentials: true,
+})
+
+);
+
+
+app.use(cookieParser());
 
 // Middleware
 app.use(express.json());
@@ -32,10 +54,10 @@ app.use("/transactions", transactionRouter);
 app.use("/auth", authRouter);
 
 app.post("/auth/test", (req, res) => {
-  res.json({
-    success: true,
-    message: "Auth route is working!",
-  });
+    res.json({
+        success: true,
+        message: "Auth route is working!",
+    });
 });
 
 // Start server after connecting to MongoDB
