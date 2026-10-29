@@ -1,16 +1,19 @@
 import express from "express";
 import dotenv from "dotenv";
 import transactionRouter from "./routes/transactionRoutes.js";
+import authRouter from "./routes/authRoutes.js";
 import connectDB from "./config/db.js";
 import cors from "cors";
 
 dotenv.config();
 
 const app = express();
+
 app.use(cors());
 
 // Middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
     console.log("Request received:", req.method, req.url);
@@ -22,8 +25,18 @@ app.get("/", (req, res) => {
     res.send("Expense Tracker Backend is running!");
 });
 
-// Transaction routes
+// Transaction routes, mounts the transaction router on the /transactions path, so all transaction-related routes start with /transactions.
 app.use("/transactions", transactionRouter);
+
+// Auth routes, mounts the auth router on the /auth path, so all auth-related routes start with /auth.
+app.use("/auth", authRouter);
+
+app.post("/auth/test", (req, res) => {
+  res.json({
+    success: true,
+    message: "Auth route is working!",
+  });
+});
 
 // Start server after connecting to MongoDB
 const startServer = async () => {

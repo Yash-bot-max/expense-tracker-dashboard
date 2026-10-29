@@ -2,28 +2,33 @@ import Transaction from "../models/Transaction.js";
 
 export const getTransactions = async (req, res) => {
     try {
-        const transactions = await Transaction.find();
+        const transactions = await Transaction.find({
+            user: req.userId,
+        });
 
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             count: transactions.length,
             data: transactions,
         });
-
     } catch (error) {
-        res.status(500).json({
+        console.error("Get transactions error:", error.message);
+
+        return res.status(500).json({
             success: false,
             message: "Failed to fetch transactions",
-            error: error.message,
         });
     }
 };
 
 
+
+
 export const createTransaction = async (req, res) => {
     try {
         const { description, amount, category, type, date } = req.body;
-
+        console.log("Request body:", req.body);
+        console.log("Content-Type:", req.headers["content-type"]);
 
         const transaction = await Transaction.create({
             description,
@@ -31,6 +36,7 @@ export const createTransaction = async (req, res) => {
             category,
             type,
             date,
+            user: req.userId,
         });
 
         res.status(201).json({
@@ -38,7 +44,6 @@ export const createTransaction = async (req, res) => {
             message: "Transaction created successfully!",
             data: transaction,
         });
-
 
     } catch (error) {
         res.status(500).json({
@@ -49,71 +54,78 @@ export const createTransaction = async (req, res) => {
     }
 };
 
-
 export const updateTransaction = async (req, res) => {
-    try {
-        const { id } = req.params;
+  try {
+    const { id } = req.params;
+    const { description, amount, category, type, date } = req.body;
 
+    const updatedTransaction = await Transaction.findOneAndUpdate(
+      {
+        _id: id,
+        user: req.userId,
+      },
+      {
+        description,
+        amount,
+        category,
+        type,
+        date,
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
 
-        const updatedTransaction = await Transaction.findByIdAndUpdate(id,
-            req.body,
-            {
-                //it returns updated data instead of old data.
-                new: true,
-                // check if the data is valid according to the schema before updating it.
-                runValidators: true,
-            }
-        );
-
-        if (!updatedTransaction) {
-            return res.status(404).json({
-                success: false,
-                message: "Transaction not found",
-            });
-        }
-
-        res.status(200).json({
-            success: true,
-            message: "Transaction updated successfully!",
-            data: updatedTransaction,
-        });
-
-
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: "Failed to update transaction",
-            error: error.message,
-        });
+    if (!updatedTransaction) {
+      return res.status(404).json({
+        success: false,
+        message: "Transaction not found or access denied",
+      });
     }
+
+    return res.status(200).json({
+      success: true,
+      message: "Transaction updated successfully",
+      data: updatedTransaction,
+    });
+  } catch (error) {
+    console.error("Update transaction error:", error.message);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to update transaction",
+    });
+  }
 };
 
 export const deleteTransaction = async (req, res) => {
-    try {
-        const { id } = req.params;
+  try {
+    const { id } = req.params;
 
+    const deletedTransaction = await Transaction.findOneAndDelete({
+      _id: id,
+      user: req.userId,
+    });
 
-        const deletedTransaction = await Transaction.findByIdAndDelete(id);
-
-        if (!deletedTransaction) {
-            return res.status(404).json({
-                success: false,
-                message: "Transaction not found",
-            });
-        }
-
-        res.status(200).json({
-            success: true,
-            message: "Transaction deleted successfully!",
-            data: deletedTransaction,
-        });
-
-
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: "Failed to delete transaction",
-            error: error.message,
-        });
+    if (!deletedTransaction) {
+      return res.status(404).json({
+        success: false,
+        message: "Transaction not found or access denied",
+      });
     }
+
+    return res.status(200).json({
+      success: true,
+      message: "Transaction deleted successfully",
+    });
+  } catch (error) {
+    console.error("Delete transaction error:", error.message);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to delete transaction",
+    });
+  }
 };
+
