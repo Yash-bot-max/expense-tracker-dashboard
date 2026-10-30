@@ -25,6 +25,10 @@ body.light-body {
     border-color: #cbd5e1;
 }
 
+.app.light .user-welcome {
+    color: #0f172a;
+}
+
 
 /* Loading State */
 .app-loading {

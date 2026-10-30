@@ -10,6 +10,7 @@ import { FaGraduationCap } from "react-icons/fa";
 import { FaPlane } from "react-icons/fa";
 import { FaLaptop } from "react-icons/fa";
 import { FaEllipsisH } from "react-icons/fa";
+import { FcElectronics } from "react-icons/fc";
 
 const TransactionList = ({ sortedTransactions, handleEdit,
     handleDelete }) => {
@@ -23,6 +24,7 @@ const TransactionList = ({ sortedTransactions, handleEdit,
         Education: <FaGraduationCap />,
         Travel: <FaPlane />,
         Technology: <FaLaptop />,
+        Electronics: <FcElectronics />,
         Other: <FaEllipsisH />,
     };
     const formatAmount = (amount) => {

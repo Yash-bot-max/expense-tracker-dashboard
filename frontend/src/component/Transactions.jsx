@@ -149,7 +149,6 @@ const Transactions = ({ transactions, setTransactions }) => {
           register={register}
           errors={errors}
           reset={reset}
-          token={token}
         />
 
         {transactions.length > 0 ? (

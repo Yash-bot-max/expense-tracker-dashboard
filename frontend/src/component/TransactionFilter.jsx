@@ -46,6 +46,7 @@ const TransactionFilter = ({ setSearchValue, SearchValue, CategoryFilter, setCat
                         <option value="Education">Education</option>
                         <option value="Travel">Travel</option>
                         <option value="Technology">Technology</option>
+                        <option value="Electronics">Electronics</option>
                         <option value="Other">Other</option>
                     </select>
 
