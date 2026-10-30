@@ -60,6 +60,7 @@ app.post("/auth/test", (req, res) => {
     });
 });
 
+
 // Start server after connecting to MongoDB
 const startServer = async () => {
     try {

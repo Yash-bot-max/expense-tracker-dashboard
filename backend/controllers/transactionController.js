@@ -56,6 +56,11 @@ export const createTransaction = async (req, res) => {
 
 export const updateTransaction = async (req, res) => {
   try {
+    
+    console.log("Logged-in User ID:", req.userId);
+    console.log("Requested Transaction ID:", req.params.id);
+
+
     const { id } = req.params;
     const { description, amount, category, type, date } = req.body;
 
