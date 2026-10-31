@@ -110,6 +110,12 @@ expense-tracker-dashboard/
 │   ├── public/
 │   └── package.json
 │
+├── screenshots/
+│   ├── dashboard.png
+│   ├── transactions.png
+│   ├── analytics.png
+│   └── authentication.png
+│
 ├── .gitignore
 └── README.md
 ```
