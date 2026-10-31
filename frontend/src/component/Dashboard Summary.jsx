@@ -28,7 +28,7 @@ const DashboardSummary = ({ transactions, darkMode, setDarkMode }) => {
           <img src={walletIcon} alt="Wallet" />
 
           <div>
-            <h1>Expense Tracker</h1>
+            <h1>Expense Flow</h1>
             <p>Track your income and expense and take control of your finances.</p>
           </div>
 
