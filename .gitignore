@@ -4,8 +4,6 @@ node_modules/
 # Environment variables and secrets
 .env
 .env.*
-
-# Allow example environment files
 !.env.example
 
 # Build output
@@ -14,3 +12,8 @@ backend/dist/
 
 # Debug logs
 npm-debug.log*
+
+# Editor and system files
+.vscode/
+.idea/
+.DS_Store
