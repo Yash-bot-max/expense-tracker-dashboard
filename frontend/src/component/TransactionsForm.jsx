@@ -6,6 +6,26 @@ import { useState } from "react";
 const API_URL =
   "https://expense-tracker-dashboard-1-rm03.onrender.com/transactions";
 
+const getTransactionDate = (dateValue) => {
+  const now = new Date();
+
+  if (!dateValue) {
+    return now.toISOString();
+  }
+
+  const [year, month, day] = dateValue.split("-").map(Number);
+
+  const selectedDate = new Date(
+    year,
+    month - 1,
+    day,
+    now.getHours(),
+    now.getMinutes(),
+    now.getSeconds(),
+  );
+
+  return selectedDate.toISOString();
+};
 const TransactionsForm = ({
   setTransactions,
   setEditId,
@@ -39,7 +59,7 @@ const TransactionsForm = ({
                 data.type.charAt(0).toUpperCase() +
                 data.type.slice(1).toLowerCase(),
               category: data.category,
-              date: data.date,
+              date: getTransactionDate(data.date),
             }),
           },
         );
@@ -112,7 +132,7 @@ const TransactionsForm = ({
         amount: Number(data.amount),
         type: data.type,
         category: data.category,
-        date: data.date || new Date().toISOString(),
+        date: getTransactionDate(data.date),
       }),
     });
 
