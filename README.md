@@ -228,25 +228,21 @@ The following scenarios have been manually tested:
 
 ## 📸 Screenshots
 
-Screenshots of the application will be added here.
+### 1. Dashboard
 
-### Dashboard
+![ExpenseFlow Dashboard](screenshots/dashboard.png)
 
-<!-- Add dashboard screenshot here -->
+### 2. Transaction Management
 
-### Transaction Management
+![ExpenseFlow Transactions](screenshots/transactions.png)
 
-<!-- Add transactions screenshot here -->
+### 3. Analytics
 
-### Analytics
+![ExpenseFlow Analytics](screenshots/analytics.png)
 
-<!-- Add analytics screenshot here -->
+### 4. Authentication
 
-### Authentication
-
-<!-- Add login/signup screenshots here -->
-
----
+![ExpenseFlow Authentication](screenshots/authentication.png)
 
 ## 👨‍💻 Author
 
